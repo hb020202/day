@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Day</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        span {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+        .day,
+        .time {
+            display: block;
+            width: 100%;
+        }
+        .day {
+            font-size: clamp(4rem, 18vw, 14rem);
+        }
+        .time {
+            font-size: clamp(3rem, 14vw, 10rem);
+        }
+    </style>
+</head>
+<body>
+    <?php
+    $day = date('l');
+    $time = date('A');
+    ?>
+    <span>
+        <span class="day" id="day"><?php echo date('l') ?></span>
+        <span class="time" id="time"><?php echo date('A') ?></span>
+    </span>
+
+    <script>
+        function updateClock() {
+            const now = new Date();
+
+            const day = now.toLocaleDateString('en-GB', { weekday: 'long' });
+            const time = now.getHours() >= 12 ? 'PM' : 'AM';
+
+            document.getElementById('day').textContent = day;
+            document.getElementById('time').textContent = time;
+        }
+
+        updateClock();
+        setInterval(updateClock, 1000);
+    </script>
+</body>
+
+</html>
+<!--to start: php -S localhost:8888-->

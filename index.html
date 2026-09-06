@@ -7,7 +7,6 @@
         body {
             margin: 0;
             font-family: Arial, sans-serif;
-            color: red;
             font-size: 250px;
         }
         span {
@@ -40,6 +39,7 @@
         <span class="time" id="time"><?php echo date('A') ?></span>
     </span>
 
+    <script>function fullscreen(){document.documentElement.requestFullscreen();} fullscreen();</script>
     <script>
         function updateClock() {
             const now = new Date();
